@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.superherodetail.SuperHeroDetail">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/margin_half"
+                android:paddingTop="@dimen/margin_half"
+                android:paddingEnd="@dimen/margin_half"
+                android:paddingBottom="@dimen/margin_half"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/list"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/arrow"
+                app:layout_constraintStart_toEndOf="@id/arrow"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/image"
+                tools:src="@drawable/carnage"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_marginTop="@dimen/margin_wide"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/arrow" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/titleText"
+                tools:text="Spider-Man"
+                android:layout_marginTop="@dimen/margin_wide"
+                app:layout_constraintEnd_toEndOf="@+id/image"
+                app:layout_constraintStart_toStartOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@id/image" />
+
+            <TextView
+                android:id="@+id/characterPowerStats"
+                style="@style/titleDetailText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_half"
+                android:layout_marginEnd="@dimen/margin_wide"
+                android:layout_marginStart="@dimen/margin_wide"
+                android:text="@string/character_powerstats"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name" />
+
+            <TextView
+                android:id="@+id/intelligenceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/intelligence"
+                app:layout_constraintBottom_toBottomOf="@+id/intelligence"
+                app:layout_constraintStart_toStartOf="@+id/characterPowerStats"
+                app:layout_constraintTop_toTopOf="@+id/intelligence" />
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/intelligence"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="@dimen/margin_half"
+                android:layout_marginEnd="@dimen/margin_wide"
+                android:layout_marginStart="@dimen/margin_half"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/intelligenceText"
+                app:layout_constraintTop_toBottomOf="@+id/characterPowerStats"
+                app:rcAnimationEnable="true"
+                app:rcAnimationSpeedScale="2.5"
+                app:rcBackgroundColor="#0A000000"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="40"
+                app:rcProgressColor="@color/intelligence"
+                app:rcRadius="10dp" />
+
+            <TextView
+                android:id="@+id/strengthText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/strength"
+                app:layout_constraintBottom_toBottomOf="@+id/strength"
+                app:layout_constraintStart_toStartOf="@+id/intelligenceText"
+                app:layout_constraintTop_toTopOf="@+id/strength" />
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/strength"
+                android:layout_marginTop="@dimen/margin_half"
+                android:layout_marginEnd="@dimen/margin_wide"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                app:layout_constraintStart_toStartOf="@+id/intelligence"
+                app:layout_constraintTop_toBottomOf="@+id/intelligence"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:rcBackgroundColor="#0A000000"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="40"
+                app:rcProgressColor="@color/strength"
+                app:rcRadius="10dp"
+                app:rcAnimationEnable="true"
+                app:rcAnimationSpeedScale="2.5" />
+
+            <TextView
+                android:id="@+id/speedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/speed"
+                app:layout_constraintBottom_toBottomOf="@+id/speed"
+                app:layout_constraintStart_toStartOf="@+id/strengthText"
+                app:layout_constraintTop_toTopOf="@+id/speed" />
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/speed"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="@dimen/margin_half"
+                app:layout_constraintEnd_toEndOf="@+id/intelligence"
+                app:layout_constraintStart_toStartOf="@+id/strength"
+                app:layout_constraintTop_toBottomOf="@+id/strength"
+                app:rcAnimationEnable="true"
+                app:rcAnimationSpeedScale="2.5"
+                app:rcBackgroundColor="#0A000000"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="40"
+                app:rcProgressColor="@color/speed"
+                app:rcRadius="10dp" />
+
+            <TextView
+                android:id="@+id/durabilityText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/durability"
+                app:layout_constraintBottom_toBottomOf="@+id/durability"
+                app:layout_constraintStart_toStartOf="@+id/speedText"
+                app:layout_constraintTop_toTopOf="@+id/durability" />
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/durability"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="@dimen/margin_half"
+                app:layout_constraintEnd_toEndOf="@+id/strength"
+                app:layout_constraintStart_toStartOf="@+id/speed"
+                app:layout_constraintTop_toBottomOf="@+id/speed"
+                app:rcAnimationEnable="true"
+                app:rcAnimationSpeedScale="2.5"
+                app:rcBackgroundColor="#0A000000"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="40"
+                app:rcProgressColor="@color/durability"
+                app:rcRadius="10dp" />
+
+            <TextView
+                android:id="@+id/powerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/power"
+                app:layout_constraintBottom_toBottomOf="@+id/power"
+                app:layout_constraintStart_toStartOf="@+id/durabilityText"
+                app:layout_constraintTop_toTopOf="@+id/power" />
+
+            <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                android:id="@+id/power"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="@dimen/margin_half"
+                app:layout_constraintEnd_toEndOf="@+id/intelligence"
+                app:layout_constraintStart_toStartOf="@+id/durability"
+                app:layout_constraintTop_toBottomOf="@+id/durability"
+                app:rcAnimationEnable="true"
+                app:rcAnimationSpeedScale="2.5"
+                app:rcBackgroundColor="#0A000000"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="40"
+                app:rcProgressColor="@color/power"
+                app:rcRadius="10dp" />
+
+            <TextView
+                android:id="@+id/combatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/combat"
+                app:layout_constraintBottom_toBottomOf="@+id/combat"
+                app:layout_constraintStart_toStartOf="@+id/durabilityText"
+                app:layout_constraintTop_toTopOf="@+id/combat" />
+
+            <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
+                android:id="@+id/combat"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="@dimen/margin_half"
+                app:layout_constraintEnd_toEndOf="@+id/intelligence"
+                app:layout_constraintStart_toStartOf="@+id/power"
+                app:layout_constraintTop_toBottomOf="@+id/power"
+                app:rcAnimationEnable="true"
+                app:rcAnimationSpeedScale="2.5"
+                app:rcBackgroundColor="#0A000000"
+                app:rcBackgroundPadding="2dp"
+                app:rcMax="100"
+                app:rcProgress="40"
+                app:rcProgressColor="@color/combat"
+                app:rcRadius="10dp"
+/>
+
+            <TextView
+                android:id="@+id/characterFacts"
+                style="@style/titleDetailText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_half"
+                android:text="@string/character_facts"
+                app:layout_constraintEnd_toEndOf="@+id/combat"
+                app:layout_constraintStart_toStartOf="@+id/characterPowerStats"
+                app:layout_constraintTop_toBottomOf="@+id/combat" />
+
+            <TextView
+                android:id="@+id/fullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/full_name"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/margin_half"
+                app:layout_constraintStart_toStartOf="@+id/characterFacts"
+                app:layout_constraintTop_toBottomOf="@+id/characterFacts" />
+
+            <TextView
+                android:id="@+id/alterEgos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alter_egos"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/margin_half"
+                app:layout_constraintStart_toStartOf="@+id/fullName"
+                app:layout_constraintTop_toBottomOf="@+id/fullName" />
+
+            <TextView
+                android:id="@+id/aliases"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/aliases"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/margin_half"
+                app:layout_constraintStart_toStartOf="@+id/alterEgos"
+                app:layout_constraintTop_toBottomOf="@+id/alterEgos" />
+
+            <TextView
+                android:id="@+id/placeOfBirth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/place_of_birth"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/margin_half"
+                app:layout_constraintStart_toStartOf="@+id/aliases"
+                app:layout_constraintTop_toBottomOf="@+id/aliases" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
