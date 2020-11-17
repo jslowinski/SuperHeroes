@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-android-extensions'
+    id 'dagger.hilt.android.plugin'
 }
 
 
@@ -22,6 +24,10 @@ android {
 
     buildFeatures {
         dataBinding true
+    }
+
+    androidExtensions {
+        experimental = true
     }
 
     buildTypes {
@@ -46,6 +52,7 @@ dependencies {
     implementation "com.google.android.material:material:${materialVersion}"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${retrofit2KotlinCoroutinesAdapterVersion}"
 
 
 
@@ -71,11 +78,20 @@ dependencies {
 
 //    Network
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-moshi:$moshiVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+
+//    Moshi
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
 
 //    Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
-    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    implementation "androidx.hilt:hilt-common:$hiltLifecycleViewmodelVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltLifecycleViewmodelVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltLifecycleViewmodelVersion"
+//    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+
 
 //    Round Corner Progress Bar
     implementation "com.akexorcist:round-corner-progress-bar:$cornerProgressBarVersion"
@@ -83,5 +99,7 @@ dependencies {
 //    ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
 
+//    Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 
 }
