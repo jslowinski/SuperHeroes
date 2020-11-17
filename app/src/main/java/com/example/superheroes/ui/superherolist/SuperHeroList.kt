@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.superheroes.databinding.FragmentSuperHeroListBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
+import java.util.*
 
 
 @AndroidEntryPoint
@@ -32,8 +34,14 @@ class SuperHeroList : Fragment() {
 
         binding.lifecycleOwner = this
 
+        viewModel.list.observe(viewLifecycleOwner, Observer { list ->
+            binding.testText.text = list.toString()
+
+        })
+
         binding.showdetail.setOnClickListener {
             viewModel.getList()
+            Log.e("Tag", viewModel.list.value.toString())
         }
 
         return binding.root

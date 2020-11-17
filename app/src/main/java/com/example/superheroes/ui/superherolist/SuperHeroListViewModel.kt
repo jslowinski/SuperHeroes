@@ -1,37 +1,37 @@
 package com.example.superheroes.ui.superherolist
 
-import android.util.Log
-import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import com.example.superheroes.model.SuperHeroDetail
-import com.example.superheroes.network.ApiClient
-import com.example.superheroes.network.ApiClient2
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import com.example.superheroes.model.SuperHero
+import com.example.superheroes.repository.SuperHeroListRepository
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import java.lang.Exception
+import timber.log.Timber
 
 
 class SuperHeroListViewModel @ViewModelInject constructor(
-    private val apiClient2: ApiClient
+    private val superHeroListRepository: SuperHeroListRepository
 ) : ViewModel() {
 
 
-    private val _list = MutableLiveData<SuperHeroDetail>()
+    private val _list = MutableLiveData<List<SuperHero>>()
 
-    val list: LiveData<SuperHeroDetail>
+    val list: LiveData<List<SuperHero>>
         get() = _list
+
+    init {
+        getList()
+    }
 
     fun getList(){
         viewModelScope.launch {
-            val getListDeferred = apiClient2.fetchHeroDetail("644")
-            try {
-                Log.e("ModelView", getListDeferred.biography.toString())
-            } catch (e: Exception) {
-                Log.e("ViewModel", e.toString())
-            }
+            superHeroListRepository.fetchSuperHeroList()
+                .onEach { dataState ->
+                    Timber.e(dataState.toString())
+                    _list.value = dataState
+                }
+                .launchIn(viewModelScope)
         }
     }
 }
