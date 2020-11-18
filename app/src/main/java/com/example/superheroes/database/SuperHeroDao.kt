@@ -1,9 +1,7 @@
 package com.example.superheroes.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import com.example.superheroes.model.SuperHero
 
 @Dao
@@ -13,5 +11,14 @@ interface SuperHeroDao {
     suspend fun insertAll(heroList: List<SuperHero>)
 
     @Query("SELECT * FROM SuperHero")
-    suspend fun getAll(): List<SuperHero>
+    fun getAll(): LiveData<List<SuperHero>>
+
+    @Query("DELETE FROM SuperHero")
+    suspend fun removeAll()
+
+    @Transaction
+    suspend fun removeAndInsert(entities: List<SuperHero>){
+        removeAll()
+        insertAll(entities)
+    }
 }

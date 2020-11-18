@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import com.example.superheroes.database.AppDatabase
 import com.example.superheroes.database.SuperHeroDao
+import com.example.superheroes.database.SuperHeroDetailDao
+import com.example.superheroes.database.TypeResponseConverter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +20,8 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideAppDatabase(
-        application: Application
+        application: Application,
+        typeResponseConverter: TypeResponseConverter
     ): AppDatabase {
         return Room
             .databaseBuilder(
@@ -27,6 +30,7 @@ object DatabaseModule {
                 "SuperHero.db"
             )
             .fallbackToDestructiveMigration()
+            .addTypeConverter(typeResponseConverter)
             .build()
     }
 
@@ -34,5 +38,11 @@ object DatabaseModule {
     @Singleton
     fun provideSuperHeroDao(appDatabase: AppDatabase): SuperHeroDao {
         return appDatabase.superHeroDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideSuperHeroDetailDao(appDatabase: AppDatabase): SuperHeroDetailDao {
+        return appDatabase.superHeroDetailDao()
     }
 }
