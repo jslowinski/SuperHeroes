@@ -1,4 +1,4 @@
-<h1 align="center">Tablica Korkowa</h1></br>
+<h1 align="center">Super Heroes</h1></br>
 <p align="center">
   <a href="https://android-arsenal.com/api?level=26"><img alt="API" src="https://img.shields.io/badge/API-26%2B-brightgreen"/></a>
   <a href="https://github.com/jslowinski"><img alt="Profile" src="https://jslowinski.github.io/Website/badges/jslowinski.svg"/></a> 
