@@ -8,11 +8,10 @@ import com.example.superheroes.model.SuperHeroDetail
 
 @Database(
     entities = [SuperHero::class, SuperHeroDetail::class],
-    version = 1
+    version = 6
 )
 @TypeConverters(value = [TypeResponseConverter::class])
 abstract class AppDatabase: RoomDatabase() {
-
     abstract fun superHeroDao(): SuperHeroDao
     abstract fun superHeroDetailDao(): SuperHeroDetailDao
 }

@@ -36,5 +36,5 @@ class SuperHeroListViewModel @ViewModelInject constructor(
         }
     }
 
-    val list = superHeroListRepository.date
+    val list = superHeroListRepository.superHeroList
 }

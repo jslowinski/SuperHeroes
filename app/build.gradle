@@ -55,8 +55,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${retrofit2KotlinCoroutinesAdapterVersion}"
     implementation "com.jakewharton.timber:timber:${timberVersion}"
-
-
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
 
 
     testImplementation 'junit:junit:4.+'

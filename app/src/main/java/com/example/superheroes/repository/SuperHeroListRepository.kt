@@ -1,5 +1,6 @@
 package com.example.superheroes.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.superheroes.database.SuperHeroDao
 import com.example.superheroes.model.SuperHero
@@ -28,12 +29,13 @@ class SuperHeroListRepository @Inject constructor(
 //        }
 //    }
 
-    val date: LiveData<List<SuperHero>> = superHeroDao.getAll()
+    val superHeroList: LiveData<List<SuperHero>> = superHeroDao.getAll()
 
     suspend fun refreshData() {
         withContext(Dispatchers.IO){
             try {
                 val newData = apiClient2.fetchHeroes()
+                Log.e("FetchData", newData.toString())
                 superHeroDao.removeAndInsert(newData)
             } catch (e: Exception) {
             }

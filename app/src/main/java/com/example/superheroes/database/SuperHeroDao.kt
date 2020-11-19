@@ -16,7 +16,6 @@ interface SuperHeroDao {
     @Query("DELETE FROM SuperHero")
     suspend fun removeAll()
 
-    @Transaction
     suspend fun removeAndInsert(entities: List<SuperHero>){
         removeAll()
         insertAll(entities)

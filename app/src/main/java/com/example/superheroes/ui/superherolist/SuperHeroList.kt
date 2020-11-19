@@ -37,12 +37,12 @@ class SuperHeroList : Fragment() {
         val binding = FragmentSuperHeroListBinding.inflate(inflater)
 
         fastItemAdapter = FastItemAdapter()
-
         val gridLayoutManager = GridLayoutManager(context, 2)
         binding.rv.layoutManager = gridLayoutManager
         binding.rv.adapter = fastItemAdapter
 
         binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
 //        viewModel.list.observe(viewLifecycleOwner, Observer { list ->
 //            val model = ArrayList<SuperHeroListBindingItem>()

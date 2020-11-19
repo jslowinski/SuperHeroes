@@ -33,11 +33,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_normal"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:fontFamily="@font/roboto"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/listImage"
                 app:layout_constraintStart_toStartOf="@+id/listImage"
                 app:layout_constraintTop_toBottomOf="@+id/listImage"
-                tools:text="Spider-Man"
-                />
+                tools:text="Super Hero" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

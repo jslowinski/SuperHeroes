@@ -14,16 +14,16 @@ class TypeResponseConverter @Inject constructor(
 ) {
 
     @TypeConverter
-    fun fromString(value: String): List<SuperHeroDetail.PowerStats>? {
-        val listType = Types.newParameterizedType(List::class.java, SuperHeroDetail.PowerStats::class.java)
-        val adapter: JsonAdapter<List<SuperHeroDetail.PowerStats>> = moshi.adapter(listType)
+    fun fromString(value: String): List<String>? {
+        val listType = Types.newParameterizedType(List::class.java, String::class.java)
+        val adapter: JsonAdapter<List<String>> = moshi.adapter(listType)
         return adapter.fromJson(value)
     }
 
     @TypeConverter
-    fun fromPowerStats(type: List<SuperHeroDetail.PowerStats>?): String{
-        val listType = Types.newParameterizedType(List::class.java, SuperHeroDetail.PowerStats::class.java)
-        val adapter: JsonAdapter<List<SuperHeroDetail.PowerStats>> = moshi.adapter(listType)
+    fun fromPowerStats(type: List<String>?): String{
+        val listType = Types.newParameterizedType(List::class.java, String::class.java)
+        val adapter: JsonAdapter<List<String>> = moshi.adapter(listType)
         return adapter.toJson(type)
     }
 }
