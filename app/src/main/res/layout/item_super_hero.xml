@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="hero"
+            type="com.example.superheroes.model.SuperHero" />
+
+        <variable
+            name="heroCallback"
+            type="com.example.superheroes.ui.superherolist.HeroClick" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -23,6 +30,7 @@
                 android:layout_height="150dp"
                 android:layout_margin="@dimen/margin_normal"
                 android:scaleType="fitCenter"
+                app:loadImage="@{hero.url}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -37,11 +45,23 @@
                 android:fontFamily="@font/roboto"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:text="@{hero.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/listImage"
                 app:layout_constraintStart_toStartOf="@+id/listImage"
                 app:layout_constraintTop_toBottomOf="@+id/listImage"
                 tools:text="Super Hero" />
+
+            <View
+                android:id="@+id/clickableOverlay"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="?attr/selectableItemBackground"
+                android:onClick="@{() -> heroCallback.onClick(hero)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

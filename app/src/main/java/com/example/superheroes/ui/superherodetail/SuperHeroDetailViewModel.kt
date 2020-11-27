@@ -1,6 +1,5 @@
 package com.example.superheroes.ui.superherodetail
 
-import androidx.databinding.ObservableBoolean
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
@@ -14,8 +13,19 @@ class SuperHeroDetailViewModel @ViewModelInject constructor(
     val selectedProperty = superHeroDetailRepository.getData(savedStateHandle.get<String>("heroId")!!)
     val url = savedStateHandle.get<String>("heroUrl")!!
 
-    init {
+    private val _navigateBack = MutableLiveData<Boolean?>()
+    val navigateBack : LiveData<Boolean?>
+        get() = _navigateBack
 
+    fun back(){
+        _navigateBack.value = true
+    }
+
+    fun doneNavigating(){
+        _navigateBack.value = null
+    }
+
+    init {
         viewModelScope.launch {
             superHeroDetailRepository.refreshData(savedStateHandle.get<String>("heroId")!!)
         }

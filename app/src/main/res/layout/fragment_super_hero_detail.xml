@@ -26,7 +26,8 @@
                 android:layout_marginStart="@dimen/margin_wide"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_arrow_back" />
+                app:srcCompat="@drawable/ic_arrow_back"
+                android:onClick="@{() -> hero.back()}"/>
 
             <TextView
                 android:id="@+id/textView3"

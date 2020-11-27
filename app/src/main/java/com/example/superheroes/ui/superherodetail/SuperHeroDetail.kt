@@ -1,14 +1,13 @@
 package com.example.superheroes.ui.superherodetail
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
 import com.example.superheroes.NavGraphArgs
 import com.example.superheroes.databinding.FragmentSuperHeroDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,6 +46,13 @@ class SuperHeroDetail : Fragment() {
                 binding.power.progressText = it.powerStats.power
                 binding.combat.progress = it.powerStats.combat.toFloat()
                 binding.combat.progressText = it.powerStats.combat
+            }
+        })
+
+        viewModel.navigateBack.observe(viewLifecycleOwner, {
+            if(it == true) {
+                findNavController().popBackStack()
+                viewModel.doneNavigating()
             }
         })
 
