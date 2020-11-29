@@ -1,0 +1,17 @@
+[
+  {
+    "id": 30,
+    "name": "Ant-Man",
+    "image": "https://jslowinski.github.io/SuperHeroList/Images/Ant-Man.png"
+  },
+  {
+    "id": 106,
+    "name": "Black Panther",
+    "image": "https://jslowinski.github.io/SuperHeroList/Images/Black-Panther.png"
+  },
+  {
+    "id": 107,
+    "name": "Black Widow",
+    "image": "https://jslowinski.github.io/SuperHeroList/Images/Black-Widow.png"
+  }
+]

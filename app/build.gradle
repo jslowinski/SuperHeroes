@@ -31,6 +31,10 @@ android {
         experimental = true
     }
 
+    testOptions.unitTests {
+        includeAndroidResources = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -56,11 +60,21 @@ dependencies {
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${retrofit2KotlinCoroutinesAdapterVersion}"
     implementation "com.jakewharton.timber:timber:${timberVersion}"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.test:core:${coreVersion}"
 
 
-    testImplementation 'junit:junit:4.+'
+    testImplementation "junit:junit:${junitVersion}"
+    testImplementation("com.squareup.okhttp3:mockwebserver:3.4.1")
+    testImplementation("com.squareup.okhttp3:okhttp:3.4.1")
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation "org.robolectric:robolectric:${robolectricVersion}"
+    testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+    testImplementation 'org.mockito:mockito-core:3.5.13'
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+
 //    Support Libraries
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
